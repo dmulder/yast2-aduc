@@ -280,7 +280,7 @@ class TabModel:
 
     def get_value(self, key, strip=True):
         value = self.props_map.get(key, [""])
-        if strip and len(value) == 1:
+        if value and strip and len(value) == 1:
             value = value[-1]
         return value
 
@@ -334,6 +334,7 @@ class TabProps(object):
     def __init__(self, conn, obj, contents, start_tab):
         self.obj = obj
         self.conn = conn
+        self.conn.extend_obj_attrs(self.obj[-1])
         self.keys = self.obj[1].keys()
         self.props_map = self.obj[1]
         self.tabModel = TabModel(self.props_map)

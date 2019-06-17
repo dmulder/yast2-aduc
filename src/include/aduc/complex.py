@@ -38,6 +38,29 @@ class Connection(Ldap):
         ret = self.ldap_search(container, SCOPE_ONELEVEL, search, ['name', 'distinguishedName'])
         return [(e[0], e[1]['name'][-1]) for e in ret]
 
+    def __extend_attrs(self, objectClass):
+        attrs = []
+        data = self.schema['objectClasses'][objectClass]
+        attrs.extend(data['must'])
+        attrs.extend(data['may'])
+        rules = self.schema['dITContentRules'][objectClass]
+        attrs.extend(rules['must'])
+        attrs.extend(rules['may'])
+        for aux_class in rules['aux']:
+            attrs.extend(self.__extend_attrs(aux_class))
+        attrs = [a for a in attrs if not a in self.schema['constructedAttributes']]
+        return attrs
+
+    def extend_obj_attrs(self, obj):
+        attrs = []
+        if 'objectClass' in obj:
+            for objectClass in obj['objectClass']:
+                attrs.extend(self.__extend_attrs(objectClass))
+        attrs = list(set(attrs))
+        for attr in attrs:
+            if not attr.decode() in obj.keys():
+                obj[attr.decode()] = None
+
     def obj(self, dn, attrs=[]):
         if six.PY3 and type(dn) is bytes:
             dn = dn.decode('utf-8')
