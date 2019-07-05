@@ -13,5 +13,5 @@ setup(name='aduc',
     author_email='dmulder@suse.com',
     url='https://github.com/yast/yast2-aduc',
     scripts=['build/_scripts/aduc'],
-    packages=['aduc'],
+    packages=['aduc', 'yast'],
 )
