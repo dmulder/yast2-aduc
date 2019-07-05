@@ -3,9 +3,181 @@
 def import_module(*args):
     pass
 
-class Code:
-    def __init__(self, *args):
-        pass
+from yast import Wizard
 
+def BarGraph(*args):
+    raise NotImplementedError()
+def HBox(*args):
+    raise NotImplementedError()
+def MarginBox(*args):
+    raise NotImplementedError()
+def Slider(*args):
+    raise NotImplementedError()
+def Boolean(*args):
+    raise NotImplementedError()
+def HCenter(*args):
+    raise NotImplementedError()
+def MenuButton(*args):
+    raise NotImplementedError()
+def String(*args):
+    raise NotImplementedError()
+def Bottom(*args):
+    raise NotImplementedError()
+def Header(*args):
+    raise NotImplementedError()
+def MinHeight(*args):
+    raise NotImplementedError()
 def Symbol(var):
     return var
+def BusyIndicator(*args):
+    raise NotImplementedError()
+def Heading(*args):
+    raise NotImplementedError()
+def MinSize(*args):
+    raise NotImplementedError()
+def Table(*args):
+    raise NotImplementedError()
+def ButtonBox(*args):
+    raise NotImplementedError()
+def HMultiProgressMeter(*args):
+    raise NotImplementedError()
+def MinWidth(*args):
+    raise NotImplementedError()
+def Term(*args):
+    raise NotImplementedError()
+def Byteblock(*args):
+    raise NotImplementedError()
+def HSpacing(*args):
+    raise NotImplementedError()
+def MultiLineEdit(*args):
+    raise NotImplementedError()
+def textdomain(*args):
+    raise NotImplementedError()
+def Cell(*args):
+    raise NotImplementedError()
+def HSquash(*args):
+    raise NotImplementedError()
+def MultiSelectionBox(*args):
+    raise NotImplementedError()
+def TextEntry(*args):
+    raise NotImplementedError()
+def Center(*args):
+    raise NotImplementedError()
+def HStretch(*args):
+    raise NotImplementedError()
+def Opt(*args):
+    raise NotImplementedError()
+def TimeField(*args):
+    raise NotImplementedError()
+def CheckBox(*args):
+    raise NotImplementedError()
+def HVCenter(*args):
+    raise NotImplementedError()
+def PackageSelector(*args):
+    raise NotImplementedError()
+def TimezoneSelector(*args):
+    raise NotImplementedError()
+def CheckBoxFrame(*args):
+    raise NotImplementedError()
+def HVSquash(*args):
+    raise NotImplementedError()
+def PartitionSplitter(*args):
+    raise NotImplementedError()
+def Top(*args):
+    raise NotImplementedError()
+def Code(*args):
+    raise NotImplementedError()
+def HWeight(*args):
+    raise NotImplementedError()
+def Password(*args):
+    raise NotImplementedError()
+def Tree(*args):
+    raise NotImplementedError()
+def ColoredLabel(*args):
+    raise NotImplementedError()
+def IconButton(*args):
+    raise NotImplementedError()
+def Path(*args):
+    raise NotImplementedError()
+def VBox(*args):
+    raise NotImplementedError()
+def ComboBox(*args):
+    raise NotImplementedError()
+def Id(*args):
+    raise NotImplementedError()
+def PatternSelector(*args):
+    raise NotImplementedError()
+def VCenter(*args):
+    raise NotImplementedError()
+def DateField(*args):
+    raise NotImplementedError()
+def Image(*args):
+    raise NotImplementedError()
+def PkgSpecial(*args):
+    raise NotImplementedError()
+def VMultiProgressMeter(*args):
+    raise NotImplementedError()
+def Declare(*args):
+    raise NotImplementedError()
+def ProgressBar(*args):
+    raise NotImplementedError()
+def Void(*args):
+    raise NotImplementedError()
+def DownloadProgress(*args):
+    raise NotImplementedError()
+def InputField(*args):
+    raise NotImplementedError()
+def PushButton(*args):
+    raise NotImplementedError()
+def VSpacing(*args):
+    raise NotImplementedError()
+def DumbTab(*args):
+    raise NotImplementedError()
+def Integer(*args):
+    raise NotImplementedError()
+def RadioButton(*args):
+    raise NotImplementedError()
+def VSquash(*args):
+    raise NotImplementedError()
+def Dummy(*args):
+    raise NotImplementedError()
+def IntField(*args):
+    raise NotImplementedError()
+def RadioButtonGroup(*args):
+    raise NotImplementedError()
+def VStretch(*args):
+    raise NotImplementedError()
+def DummySpecialWidget(*args):
+    raise NotImplementedError()
+def Item(*args):
+    raise NotImplementedError()
+def ReplacePoint(*args):
+    raise NotImplementedError()
+def VWeight(*args):
+    raise NotImplementedError()
+def Empty(*args):
+    return None
+def Label(*args):
+    raise NotImplementedError()
+def RichText(*args):
+    raise NotImplementedError()
+def Float(*args):
+    raise NotImplementedError()
+def Left(*args):
+    raise NotImplementedError()
+def Right(*args):
+    raise NotImplementedError()
+def Frame(*args):
+    raise NotImplementedError()
+def List(*args):
+    raise NotImplementedError()
+def LogView(*args):
+    raise NotImplementedError()
+def SelectionBox(*args):
+    raise NotImplementedError()
+def Graph(*args):
+    raise NotImplementedError()
+def Map(*args):
+    raise NotImplementedError()
+def SimplePatchSelector(*args):
+    raise NotImplementedError()
