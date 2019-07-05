@@ -10,6 +10,14 @@ import os, sys, traceback
 
 sys.path.append(sys.path[0]+"/../include/aduc")
 
+import site
+for site_dir in site.getsitepackages():
+    try:
+        if os.path.isdir(os.path.join(site_dir, 'aduc')):
+            sys.path.append(os.path.join(site_dir, 'aduc'))
+    except FileNotFoundError:
+        pass
+
 from wizards import ADUCSequence
 
 if __name__ == "__main__":
