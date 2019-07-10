@@ -12,6 +12,7 @@ ingredients:
     - if [ ! -f yast2-python3-bindings-*.rpm ] || [ ! -f yast2-core-*.rpm ] || [ ! -f libyui-ncurses10-*.x86_64.rpm ] || [ ! -f yast2-ycp-ui-bindings-*.x86_64.rpm ] || [ ! -f libyui10-*.x86_64.rpm ] ; then wget -r --no-parent -A 'yast2-python3-bindings-*.rpm' -A 'yast2-core-*.rpm' -A 'libyui-ncurses10-*.x86_64.rpm' -A 'yast2-ycp-ui-bindings-*.x86_64.rpm' -A 'libyui10-*.x86_64.rpm' -R 'yast2-core-devel-*.rpm' https://$REPO/x86_64/ && mv $REPO/x86_64/*.rpm .; fi
     - REPO="download.opensuse.org/repositories/devel:/languages:/python:/Factory/openSUSE_Tumbleweed/x86_64"
     - if [ ! -f python3-base-*.x86_64.rpm ] ; then wget -r --no-parent -A 'python3-base-*.x86_64.rpm' -R 'python3-base-32bit-*.rpm' -R 'python3-base-debug*.rpm' https://$REPO && mv $REPO/*.rpm .; fi
+    - cp ../aduc.png .
     
 script:
   # Extract the rpms
@@ -32,7 +33,7 @@ script:
   - echo "Name=aduc"         >> aduc.desktop
   - echo "Exec=y2base aduc ncurses" >> aduc.desktop
   - echo "Terminal=true" >> aduc.desktop
-  - echo "Icon=appimage"    >> aduc.desktop
+  - echo "Icon=aduc"    >> aduc.desktop
   - echo "Type=Application" >> aduc.desktop
   - echo "Categories=Settings" >> aduc.desktop
-  - cp /home/dmulder/Downloads/aduc.png appimage.png
+  - mv ../aduc.png .
