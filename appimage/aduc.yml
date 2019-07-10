@@ -7,6 +7,7 @@ build:
 ingredients:
   script:
     - REPO="download.opensuse.org/repositories/YaST:/Head/openSUSE_Tumbleweed"
+    # TODO: yast2-aduc should be built locally, not pulled from Tumbleweed
     - if [ ! -f yast2-aduc-*.noarch.rpm ] || [ ! -f yast2-adcommon-python-*.noarch.rpm ] ; then wget -r --no-parent -A 'yast2-aduc-*.noarch.rpm' -A 'yast2-adcommon-python-*.noarch.rpm' https://$REPO/noarch && mv $REPO/noarch/*.rpm .; fi
     - if [ ! -f yast2-python3-bindings-*.rpm ] || [ ! -f yast2-core-*.rpm ] || [ ! -f libyui-ncurses10-*.x86_64.rpm ] ; then wget -r --no-parent -A 'yast2-python3-bindings-*.rpm' -A 'yast2-core-*.rpm' -A 'libyui-ncurses10-*.x86_64.rpm' -R 'yast2-core-devel-*.rpm' https://$REPO/x86_64/ && mv $REPO/x86_64/*.rpm .; fi
     - REPO="download.opensuse.org/repositories/devel:/languages:/python:/Factory/openSUSE_Tumbleweed/x86_64"
