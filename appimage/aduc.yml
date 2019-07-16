@@ -6,12 +6,16 @@ build:
 
 ingredients:
   script:
-    - REPO="download.opensuse.org/repositories/YaST:/Head/openSUSE_Tumbleweed"
+    - REPO="download.opensuse.org/repositories/YaST:/Head/openSUSE_Leap_15.1"
     # TODO: yast2-aduc should be built locally, not pulled from Tumbleweed
     - if [ ! -f yast2-aduc-*.noarch.rpm ] || [ ! -f yast2-adcommon-python-*.noarch.rpm ] ; then wget -r --no-parent -A 'yast2-aduc-*.noarch.rpm' -A 'yast2-adcommon-python-*.noarch.rpm' https://$REPO/noarch && mv $REPO/noarch/*.rpm .; fi
+    - REPO="download.opensuse.org/repositories/YaST:/Head/openSUSE_Leap_15.0"
     - if [ ! -f yast2-python3-bindings-*.rpm ] || [ ! -f yast2-core-*.rpm ] || [ ! -f libyui-ncurses10-*.x86_64.rpm ] || [ ! -f yast2-ycp-ui-bindings-*.x86_64.rpm ] || [ ! -f libyui10-*.x86_64.rpm ] ; then wget -r --no-parent -A 'yast2-python3-bindings-*.rpm' -A 'yast2-core-*.rpm' -A 'libyui-ncurses10-*.x86_64.rpm' -A 'yast2-ycp-ui-bindings-*.x86_64.rpm' -A 'libyui10-*.x86_64.rpm' -R 'yast2-core-devel-*.rpm' https://$REPO/x86_64/ && mv $REPO/x86_64/*.rpm .; fi
-    - REPO="download.opensuse.org/repositories/devel:/languages:/python:/Factory/openSUSE_Tumbleweed/x86_64"
+    - REPO="download.opensuse.org/repositories/devel:/languages:/python:/Factory/openSUSE_Leap_15.0/x86_64"
     - if [ ! -f python3-base-*.x86_64.rpm ] || [ ! -f libpython3_*.x86_64.rpm ] || [ ! -f python3-3*.x86_64.rpm ] ; then wget -r --no-parent -A 'python3-base-*.x86_64.rpm' -R 'python3-base-32bit-*.rpm' -R 'python3-base-debug*.rpm' -A 'libpython3_*.x86_64.rpm' -R 'libpython3_*32bit*.x86_64.rpm' -R 'libpython3_*debuginfo*.x86_64.rpm' -A 'python3-3*.x86_64.rpm' -R 'python3-curses-*.x86_64.rpm' -R 'python3-32bit*.x86_64.rpm' -R 'python3-dbm*.x86_64.rpm' -R 'python3-debug*.x86_64.rpm' -R 'python3-devel*.x86_64.rpm' -R 'python3-idle*.x86_64.rpm' -R 'python3-testsuite*.x86_64.rpm' -R 'python3-tk*.x86_64.rpm' -R 'python3-tools*.x86_64.rpm' https://$REPO && mv $REPO/*.rpm .; fi
+    - REPO="download.opensuse.org/repositories/Base:/System/openSUSE_Leap_15.0/x86_64"
+    #- if [ ! -f glibc-locale-base-*.x86_64.rpm ] ; then wget -r --no-parent -A 'glibc-locale-base-*.x86_64.rpm' -R 'glibc-locale-base-32bit-*.x86_64.rpm' -R 'glibc-locale-base-debuginfo-*.x86_64.rpm' https://$REPO && mv $REPO/*.rpm .; fi
+    - if [ ! -f libreadline-*.x86_64.rpm ] ; then wget -r --no-parent -A 'libreadline-*.x86_64.rpm' https://$REPO && mv $REPO/*.rpm .; fi
     - cp ../aduc.png .
     
 script:
@@ -26,6 +30,8 @@ script:
   - rpm2cpio ../python3-base-*.rpm | cpio -idmv
   - rpm2cpio ../libpython3_*.x86_64.rpm | cpio -idmv
   - rpm2cpio ../python3-3*.x86_64.rpm | cpio -idmv
+  #- rpm2cpio ../glibc-locale-base-*.x86_64.rpm | cpio -idmv
+  - rpm2cpio ../libreadline-*.x86_64.rpm | cpio -idmv
   # Make binaries relocatable
   - pushd usr && find . -type f -exec sed -i -e 's#/usr#././#g' {} \; && popd
   # Put y2base in our path
@@ -33,7 +39,10 @@ script:
   # Create the desktop file
   - echo "[Desktop Entry]"  >  aduc.desktop
   - echo "Name=aduc"         >> aduc.desktop
-  - echo "Exec=y2base aduc ncurses" >> aduc.desktop
+  #- echo "Exec=y2base aduc ncurses" >> aduc.desktop
+  #- echo "Exec=env Y2DEBUG=1 y2base aduc ncurses" >> aduc.desktop
+  - echo "Exec=python3" >> aduc.desktop
+  #- echo "Exec=strace y2base aduc ncurses" >> aduc.desktop
   - echo "Terminal=true" >> aduc.desktop
   - echo "Icon=aduc"    >> aduc.desktop
   - echo "Type=Application" >> aduc.desktop
